@@ -33,7 +33,7 @@ function criarComida() {
 
 document.addEventListener('keydown', update);
 
- function update(event) {
+function update(event) {
   if(event.keyCode == 37 && direcao != 'right') direcao = 'left';
   if(event.keyCode == 38 && direcao != 'down') direcao = 'up';
   if(event.keyCode == 39 && direcao != 'left') direcao = 'right';
@@ -46,6 +46,12 @@ function iniciar() {
   if(snake[0].y > 15*box && direcao == "down") snake[0].y = 0;
   if(snake[0].y < 0 && direcao == 'up') snake[0].y = 16 * box;
   
+  for(i = 1; i < snake.length; i++){
+    if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+        clearInterval(jogo);
+        alert("game Over :( recarregue a pagina");
+    }
+  }
 
   bg();
   criarCobra();
