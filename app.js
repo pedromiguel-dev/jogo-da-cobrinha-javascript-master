@@ -27,7 +27,6 @@ function criarCobra() {
 }
 
 function criarComida() {
-
   contexto.fillStyle = "green";
   contexto.fillRect(comida.x, comida.y, box, box);
 }
@@ -61,7 +60,14 @@ function iniciar() {
     if(direcao == "up") snakeY -= box;
     if(direcao == "down") snakeY += box;
 
-    snake.pop();
+    if (snakeX != comida.x  || snakeY != comida.y) {
+      snake.pop();
+    } else{
+
+      comida.x = Math.floor(Math.random() * 15 + 1) * box,
+      comida.y = Math.floor(Math.random() * 15 + 1) * box
+
+    }
 
     let novaCabec = {
       x:  snakeX,
